@@ -2,6 +2,7 @@ package jettmeter.web.service.repository;
 
 import jettmeter.web.model.Record;
 import org.springframework.jmx.export.annotation.ManagedAttribute;
+import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.jmx.export.annotation.ManagedResource;
 
 import java.util.HashMap;
@@ -24,5 +25,10 @@ public class MemoryRepositoryService implements RepositoryService<String, Record
     @ManagedAttribute(description = "The size of the store")
     public int getSize(){
         return store.size();
+    }
+
+    @ManagedOperation(description = "Clears the inn-memory store")
+    public synchronized void resetStore(){
+	store.clear();
     }
 }
