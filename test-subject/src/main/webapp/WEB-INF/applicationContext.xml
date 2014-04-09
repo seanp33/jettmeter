@@ -7,6 +7,6 @@
 
     <import resource="jmx.xml"/>
 
-    <bean id="repositoryService" class="jettmeter.web.service.repository.MemoryRepositoryService" />
+    <bean id="repositoryService" class="jettmeter.web.service.repository.DirectMemoryRepositoryService" />
 
 </beans>

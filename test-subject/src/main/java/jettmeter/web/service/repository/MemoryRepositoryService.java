@@ -11,24 +11,24 @@ import java.util.Map;
 @ManagedResource(objectName = "jettmeter.jmx:name=MemoryRepositoryService,type=MemoryRepositoryService", description = "The MemoryRepositoryService")
 public class MemoryRepositoryService implements RepositoryService<String, Record, String> {
 
-    private Map<String,Record> store = new HashMap<String, Record>();
+    private Map<String, Record> store = new HashMap<String, Record>();
 
     public Record read(String id) {
         return store.get(id);
     }
 
-    public String write(Record record) {
+    public synchronized String write(final Record record) {
         store.put(record.getId(), record);
         return record.getId();
     }
 
     @ManagedAttribute(description = "The size of the store")
-    public int getSize(){
+    public int getSize() {
         return store.size();
     }
 
-    @ManagedOperation(description = "Clears the inn-memory store")
-    public synchronized void resetStore(){
-	store.clear();
+    @ManagedOperation(description = "Clears the in-memory store")
+    public synchronized void resetStore() {
+        store.clear();
     }
 }

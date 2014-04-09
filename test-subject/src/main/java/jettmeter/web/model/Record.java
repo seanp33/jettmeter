@@ -1,9 +1,10 @@
 package jettmeter.web.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Record {
+public class Record implements Serializable {
 
     private String id;
 
