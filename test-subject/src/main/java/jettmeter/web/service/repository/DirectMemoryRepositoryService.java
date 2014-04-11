@@ -14,7 +14,7 @@ public class DirectMemoryRepositoryService implements RepositoryService<String, 
         .setNumberOfBuffers(10)
         .setSize(1000)
         .setInitialCapacity(100000)
-        .setConcurrencyLevel(4)
+        .setConcurrencyLevel(100)
         .newCacheService();
 
     public Record read(String query) {
